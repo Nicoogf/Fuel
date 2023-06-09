@@ -8,6 +8,7 @@ import helmet from "helmet" ;
 import morgan from "morgan" ;
 import path from "path" ;
 import { fileURLToPath } from "url";
+import { error, log } from "console";
 
 /* Configuracion */
 
@@ -37,3 +38,13 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({storage}) ; 
+
+/* Mongoose DB Configuracion */
+
+const PORT = process.env.PORT || 6001 ;
+    mongoose.connect (process.env.MONGO_URL , {
+        useNewUrlParser : true,
+        useUnifiedTopology : true,
+    }). then( ()=>{
+        app.listen( PORT , ()=> console.log(`Servidor corriendo en puerto ${PORT}`)) ;
+    }).catch((error)=>console.log(`El error ${error} no dejo iniciar el proyecto `))
