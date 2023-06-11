@@ -10,6 +10,7 @@ import path from "path" ;
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js" ;
 import { register } from "./controllers/auth.js" ;
+import { verify } from "crypto";
 
 /* Configuracion */
 
@@ -43,7 +44,7 @@ const upload = multer({storage}) ;
 
 /*Rutas con Archivos */
 
-app.post( "/auth/register" , upload.single("picture") , register );
+app.post( "/auth/register" , upload.single("picture")  , register );
 
 /*Rutas*/
 
