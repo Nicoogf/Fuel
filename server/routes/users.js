@@ -1,6 +1,6 @@
 import express, { application } from "express" ;
 import{
-    getUsers,
+    getUser,
     getUserFiends,
     addRemovedFriends
 } from "../controllers/users.js" ;
@@ -11,7 +11,7 @@ const router = express.Router() ;
 
 /*Read*/
 
-router.get("/:id" , verifyToken , getUsers ) ;
+router.get("/:id" , verifyToken , getUser ) ;
 router.get("/:id/friend" , verifyToken , getUserFiends ) ;
 
 /*Update*/
