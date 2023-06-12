@@ -14,6 +14,9 @@ import postRouter  from "./routes/posts.js";
 import { register } from "./controllers/auth.js" ;
 import { createPost } from "./controllers/posts.js" ;
 import { verifyToken } from "./middleware/auth.js";
+import User from "./models/User.js" ;
+import Post from "./models/Post.js" ;
+import { users , posts } from "./data/index.js" ;
 
 
 /* Configuracion */
@@ -61,9 +64,16 @@ app.use("/posts" , postRouter ) ;
 /* Mongoose DB Configuracion */
 
 const PORT = process.env.PORT || 6001 ;
-    mongoose.connect (process.env.MONGO_URL , {
-        useNewUrlParser : true,
-        useUnifiedTopology : true,
-    }). then( ()=>{
+    mongoose.connect(process.env.MONGO_URL,{
+        useNewUrlParser:true,
+        useUnifiedTopology:true,
+    }).then( ()=>{
         app.listen( PORT , ()=> console.log(`Servidor corriendo en puerto ${PORT}`)) ;
-    }).catch((error)=>console.log(`El error ${error} no dejo iniciar el proyecto `))
+
+     
+       // User.insertMany(users);
+       // Post.insertMany(posts) ;
+
+    }).catch((error)=>console.log(`El error ${error} no dejo iniciar el proyecto `));
+
+
