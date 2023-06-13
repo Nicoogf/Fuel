@@ -83,6 +83,102 @@ const Form = () =>{
                          }}
                    >
 
+                    {isRegister && (
+                        <>
+                            <TextField 
+                                label= "First Name"
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                value={values.firstName}
+                                name="firstName"
+                                error={Boolean(Louched.firstName)&& Boolean(errors.firstName)}
+                                helperText ={touched.firstName && errors.firstName}
+                                sx= {{gridColumn : "span 2"}}
+
+                                />
+
+                            <TextField 
+                                label= "Last Name"
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                value={values.lastName}
+                                name="lastname"
+                                error={Boolean(Louched.lastname)&& Boolean(errors.lastname)}
+                                helperText ={touched.lastname && errors.lastname}
+                                sx= {{gridColumn : "span 2"}}
+
+                                />    
+
+                            <TextField 
+                                label= "Location"
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                value={values.location}
+                                name="location"
+                                error={Boolean(Louched.location)&& Boolean(errors.location)}
+                                helperText ={touched.location && errors.location}
+                                sx= {{gridColumn : "span 4"}}
+
+                                />   
+
+                            <TextField 
+                                label= "Ocupation"
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                value={values.ocupattion}
+                                name="ocupattion"
+                                error={Boolean(Louched.ocupattion)&& Boolean(errors.ocupattion)}
+                                helperText ={touched.ocupattion && errors.ocupattion}
+                                sx= {{gridColumn : "span 4"}}
+
+                                /> 
+
+                                <Box
+                                gridColumn= "span 4"
+                                border={`1px solid ${palette.neutral.medium}`}
+                                borderRadius = "5px"
+                                p="1rem"
+                                >
+
+                                 <Dropzone
+                                    acceptedFiles= ".jpg,.jpeg,.png"
+                                    multiple={false}
+                                    onDrop={ (acceptedFiles) =>{
+                                        setFieldValue("picture" , acceptedFiles[0])
+                                    }}
+                                 >
+
+                                    { ({getRootProps, getInputProps}) =>{
+
+                                        <Box 
+                                        {... getRootProps()}
+                                        border={`2px dashed ${palette.primary.main}`}
+                                        p="1rem"
+                                        sx={{"&:hover" : {cursor:pointer}}}
+                                        >
+
+                                        <input {...getInputProps() }/>
+                                        {!values.picture ? (
+                                            <p>Agregar foto aqui</p>
+                                        ): (
+                                            <Flexbetween>
+                                                <Typography> {values.pciture.name} </Typography>
+                                                <EditOutLinedIcon />
+                                            </Flexbetween>
+                                        )}
+                                           
+                                        </Box>
+
+                                    }}
+
+                                 </Dropzone>   
+
+
+
+                                </Box>       
+                        </>
+
+                    )}
                     </Box>
                 </form>
             )}
