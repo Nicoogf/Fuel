@@ -1,40 +1,36 @@
-import { Box , Typography , useTheme , useMediaQuery } from "@mui/material";
-import { Form } from "./Form";
+import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import Form from "./Form";
 
-const loginPage = () =>{
-    const theme = useTheme() ;
-    const isNonMobileScreens = useMediaQuery("(min-width : 1000px") ;
-    return <Box>
+const LoginPage = () => {
+  const theme = useTheme();
+  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
+  return (
+    <Box>
+      <Box
+        width="100%"
+        backgroundColor={theme.palette.background.alt}
+        p="1rem 6%"
+        textAlign="center"
+      >
+        <Typography fontWeight="bold" fontSize="32px" color="primary">
+          Sociopedia
+        </Typography>
+      </Box>
 
-        <Box width="100%" backgoundColor= {theme.palette.background.alt} p="1rem 6%" textAlign="center">
-            
-
-            <Typography
-                fontWeight="bold"
-                fontSize="32px"
-                color="primary"           
-                >
-                        Fuel
-            </Typography>
-
-        </Box>
-
-        <Box width={isNonMobileScreens ? "%50" : "93%"}
+      <Box
+        width={isNonMobileScreens ? "50%" : "93%"}
         p="2rem"
         m="2rem auto"
         borderRadius="1.5rem"
-        backgoundColor= {theme.palette.background.alt}
-        >
-
-            <Typography fontWeight="500" variant="h5" sx={{mb : "1.5rem"}}>
-                    Bienvenidos a Fuel , red social de Practica ReactJS
-            </Typography>
-
-            <Form />
-
-        </Box>
-        
+        backgroundColor={theme.palette.background.alt}
+      >
+        <Typography fontWeight="500" variant="h5" sx={{ mb: "1.5rem" }}>
+         Bienvenido a Fuel, una red social de Practica ReactJs
+        </Typography>
+        <Form />
+      </Box>
     </Box>
-}
+  );
+};
 
-export default loginPage ;
+export default LoginPage;
